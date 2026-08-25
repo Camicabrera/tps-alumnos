@@ -82,7 +82,7 @@ CustomVector &CustomVector::operator=(const CustomVector &other) {
 CustomVector::~CustomVector() {
     // TODO: liberar la memoria del vector.
     delete [] this ->data;
-    data=nullptr;
+    this -> data=nullptr;
 }
 
 int CustomVector::get_length() const {
@@ -179,7 +179,7 @@ void CustomVector::push_back(int value) {
 
         for (int i=0;i<this-> length;i++){
             *(nuevo + i)= (*this)[i];
-        }
+        } 
         *(nuevo + this -> length)= value;
         this -> length ++;
 
