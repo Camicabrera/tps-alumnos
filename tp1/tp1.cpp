@@ -102,7 +102,7 @@ const int &CustomVector::operator[](int i) const {
 int CustomVector::max() const {
     // TODO: devolver el máximo del vector.
     int max= *(this -> data);
-    for (int i=0;i<this -> length;i++){
+    for (int i=1;i<this -> length;i++){
         if ((*this)[i] > max){
             max= (*this)[i];
         }
