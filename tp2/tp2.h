@@ -275,41 +275,40 @@ List<T>::List() {
 template<typename T>
 List<T>::List(const List<T> &other) {
     // TODO: crear la nueva lista, como una copia independiente de other
-    head = nullptr;
-    tail = nullptr;
-    size = 0;
+    this->head = nullptr;
+    this->tail = nullptr;
+    this->size = 0;
 
-    Node* actual = other.head; 
+    Node* actual = other.head;
+    
     while (actual != nullptr) {
-        insert_tail(actual->value);
+        this->insert_tail(actual->value); 
         actual = actual->next;
     }
+
 }
 
 template<typename T>
 List<T> &List<T>::operator=(const List<T> &other) {
     // TODO: reemplazar la lista actual con una copia independiente de other
     // La memoria anterior no debe perderse, sino liberarse correctamente
-    if (this == &other) {
+    if (&other == this){
         return *this;
     }
 
-    while(head!=nullptr){
-        Node* eliminar=head;
-        head=head->next;
-        delete eliminar;
-    }
-    tail=nullptr;
-    size=0;
-    //libero nodo por nodo asi no pierdo memoria y se libera correctamente
-    
+    else {
 
-    Node* actual = other.head; 
-    while (actual != nullptr) {
-        insert_tail(actual->value);
-        actual = actual->next;
+        while (!is_empty()){
+            pop_head();
+        }
+
+        Node* actual = other.head;
+        
+        while (actual != nullptr) {
+            this->insert_tail(actual->value); 
+            actual = actual->next;
+        }
     }
-    //hago la copia 
 
     return *this;
 }
@@ -317,42 +316,42 @@ List<T> &List<T>::operator=(const List<T> &other) {
 template<typename T>
 List<T>::~List() {
     // TODO: liberar todos los nodos que queden con delete.
-    while(head!=nullptr){
-        Node* eliminar=head;
-        head=head->next;
-        delete eliminar;
+    while (!this->is_empty()) {
+        this->pop_head();
     }
-    tail=nullptr;
 }
 
 template<typename T>
 bool List<T>::is_empty() const {
     // TODO: devolver si la lista está vacía.
-    return head==nullptr;
+     return this->size == 0;
 }
 
 template<typename T>
 size_t List<T>::length() const {
     // TODO: devolver la cantidad de elementos.
-    return size;
+    return this->size;
 }
 
 template<typename T>
 void List<T>::insert_head(const T& value) {
     // TODO: reservar un nodo con new, enlazarlo al principio y
     // actualizar head/tail/size.
-    Node* nuevo= new Node(value);
-    if (head!=nullptr){
-        nuevo->next=head;
-        head->prev=nuevo;
+    Node* nuevoN = new Node(value);
+    nuevoN->prev = nullptr;
+    nuevoN->next = this->head;
+
+    if (is_empty()){
+        this->head = nuevoN;
+        this->tail = nuevoN;
     }
-    else{
-        nuevo->next=nullptr;
-        this->tail=nuevo;
+
+    else {
+        this->head->prev = nuevoN;
+        this->head = nuevoN;
     }
-    nuevo->prev=nullptr;
-    head=nuevo;
-    size ++;
+
+    this->size++;
 }
 
 template<typename T>
@@ -360,83 +359,85 @@ void List<T>::insert_tail(const T& value) {
     // TODO: reservar un nodo con new, enlazarlo al final y
     // actualizar head/tail/size.
 
-    Node* nuevo= new Node(value);
-    if (head!=nullptr){
-        nuevo->prev= tail;
-        tail->next=nuevo;
-    }
-    else{
-        nuevo->prev=nullptr;
-        this->head=nuevo;
-    }
-    
+    Node* nuevoN = new Node(value);
+    nuevoN->prev = this->tail;
+    nuevoN->next = nullptr;
 
-    nuevo->next=nullptr;
-    this-> tail= nuevo;
-    this-> size ++;
+    if (is_empty()){
+        this->head = nuevoN;
+        this->tail = nuevoN;
+    }
+
+    else {
+        this->tail->next = nuevoN;
+        this->tail = nuevoN;
+    }
+
+    this->size++;
 }
 
 template<typename T>
 T List<T>::pop_head() {
     // TODO: sacar el primer nodo (con delete), devolver su valor.
-    Node* viejo= head;
-    T dato= head->value;
-    if (head->next!=nullptr){
-        head->next-> prev= nullptr;
-        head=viejo->next;
+    T valor = this->head->value;
+    Node* aBorrar = this->head;
+    this->head = this->head->next;
+    
+    if (this->head != nullptr) {
+        this->head->prev = nullptr;
+    } else {
+        this->tail = nullptr;
     }
-    else{
-        head=nullptr;
-        tail=nullptr;
-    }
-    delete viejo;
-    size --;
+    
+    delete aBorrar;
+    this->size--;
 
-    return dato;
+    return valor;
 }
 
 template<typename T>
 T List<T>::pop_tail() {
     // TODO: sacar el último nodo (con delete), devolver su valor.
-    Node* viejo= tail;
-    T dato= tail->value;
-    if( tail->prev != nullptr){
-        tail->prev->next=nullptr;
-        tail= viejo->prev;
-    }
-    else{
-        head=nullptr;
-        tail=nullptr;
-    }
-    delete viejo;
-    size --;
 
-    return dato;
+    T valor = this->tail->value;
+    Node* aBorrar = this->tail;
+    this->tail = this->tail->prev;
+    
+    if (this->tail != nullptr) {
+        this->tail->next = nullptr;
+    } else {
+        this->head = nullptr;
+    }
+    
+    delete aBorrar;
+    this->size--;
+
+    return valor;
 }
 
 template<typename T>
 const T& List<T>::peek_head() const {
     // TODO: devolver el valor del principio.
-    return head->value;
+    return this->head->value;
 }
 
 template<typename T>
 const T& List<T>::peek_tail() const {
     // TODO: devolver el valor del final.
-    return tail->value;
+    return this->tail->value;
 }
 
 template <typename T>
 typename List<T>::ListIter List<T>::create_head() {
     // TODO: retornar un iterador parado en el principio de la lista.
-    return ListIter(this,head);
+    return ListIter(this,this->head);
 
 }
 
 template <typename T>
 typename List<T>::ListIter List<T>::create_tail() {
     // TODO: retornar un iterador parado en el final de la lista.
-    return ListIter(this,tail);
+    return ListIter(this,this->tail);
 }
 
 /* ---------------------------------------------------------------
@@ -480,49 +481,37 @@ const T&  List<T>::ListIter::peek_current() const {
 template <typename T>
 bool List<T>::ListIter::at_last() const {
     // TODO: devolver si el iterador está en el último elemento.
-    if(list->tail==curr){
-        return true;
-    }
-    return false;
+    
+    return list->tail==curr;
 }
 
 template <typename T>
 bool List<T>::ListIter::at_first() const {
     // TODO: devolver si el iterador está en el primer elemento.
-    if (list->head==curr){
-        return true;
-    }
-    return false;
+    return list->head==curr;
 }
 
 template <typename T>
 bool List<T>::ListIter::insert_after(const T&value) {
     // TODO: insertar un valor detrás del actual con new.
-    Node* nuevo= new Node(value);
     if (curr == nullptr){
-        nuevo->prev=nullptr;
-        nuevo->next=nullptr;
-
-        list->head= nuevo;
-        list->tail=nuevo;
-        curr=nuevo;
+        list->insert_head(value);
+        curr = list->head;
         
     }
     else if(at_last()){
-        nuevo->prev=curr;
-        curr->next=nuevo;
-
-        nuevo->next=nullptr;
-        list->tail=nuevo;
+        list->insert_tail(value);
     }
     else{
+        Node* nuevo= new Node(value);
         nuevo->next=curr->next;
         nuevo->prev=curr;
 
         curr->next->prev= nuevo;
         curr->next=nuevo;
+        list->size++;
     }
-    list->size++;
+
 
     return true;
 }
@@ -530,31 +519,24 @@ bool List<T>::ListIter::insert_after(const T&value) {
 template <typename T>
 bool List<T>::ListIter::insert_before(const T&value) {
     // TODO: insertar un valor delante del actual con new.
-    Node* nuevo= new Node(value);
     if (curr == nullptr){
-        nuevo->prev=nullptr;
-        nuevo->next=nullptr;
-
-        list->head= nuevo;
-        list->tail=nuevo;
-        curr=nuevo;
+        list->insert_head(value);
+        curr = list->head;
     }
     else if(at_first()){
-        nuevo->next=curr;
-        curr->prev=nuevo;
-
-        nuevo->prev=nullptr;
-        list->head= nuevo;
+        list->insert_head(value);
     }
     else{
+        Node* nuevo= new Node(value);
         nuevo->prev=curr->prev;
         nuevo->next=curr;
 
         curr->prev->next=nuevo;
         curr->prev=nuevo;
+        list->size ++;
 
     }
-    list->size ++;
+    
     return true;
 
 }
@@ -566,7 +548,7 @@ T List<T>::ListIter::remove() {
 
     Node* viejo= curr;
     T dato=viejo->value;
-    if(list->size== (size_t)1){
+    if(at_first() && at_last()){
         curr=nullptr;
         list->head=nullptr;
         list->tail=nullptr;
