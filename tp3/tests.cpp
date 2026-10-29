@@ -331,6 +331,46 @@ void pruebas_goleadores() {
     otros.anotar_gol("Di Maria");
     verificar(otros.maximo_goleador() == "Di Maria",
               "con un solo gol, el maximo goleador es quien lo hizo");
+
+    // MIS PRUEBAS PROPIAS
+
+    // Prueba 1: un mismo jugador anota varios goles
+    Goleadores uno;
+    uno.anotar_gol("Messi");
+    uno.anotar_gol("Messi");
+    uno.anotar_gol("Messi");
+
+    verificar(uno.goles("Messi") == 3,
+              "un jugador puede anotar varios goles");
+
+    verificar(uno.cantidad_de_jugadores() == 1,
+              "anotar varias veces no agrega jugadores");
+
+
+    // Prueba 2: varios jugadores empatados
+    Goleadores empate;
+    empate.anotar_gol("Messi");
+    empate.anotar_gol("Mbappe");
+    empate.anotar_gol("Di Maria");
+
+    verificar(empate.maximo_goleador() == "Messi",
+              "si todos tienen un gol, gana el primero");
+
+
+    // Prueba 3: consultar un jugador que no existe
+    verificar(empate.goles("Ronaldo") == 0,
+              "un jugador inexistente tiene cero goles");
+
+    verificar(empate.cantidad_de_jugadores() == 3,
+              "consultar un jugador no modifica la cantidad");
+
+
+    // Prueba 4: un jugador supera al maximo
+    empate.anotar_gol("Di Maria");
+
+    verificar(empate.maximo_goleador() == "Di Maria",
+              "el maximo cambia cuando otro jugador lo supera");
+
 }
 
 int main() {
