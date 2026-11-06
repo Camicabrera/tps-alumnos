@@ -28,9 +28,9 @@ size_t funcion_hash(const std::string& clave) {
     return clave.size();*/
 
     /*PRUEBA CON NUMERO QUE ES POTENCIA DE 2
-    size_t h=0; //size_t porque es un unsigned long  (sin signo de 64 bits)
+    size_t h=0; //size_t porque es un unsigned long (sin signo de 64 bits)
     for (char c: clave){
-        h= h*32 + size_t (c); //no da numero grande porque no hay ñ ni letras con acentos 
+        h= h*32 + size_t (c); 
     }
     return h;
     */

@@ -1,0 +1,156 @@
+Jugadores con goles: 75
+Maximo goleador: Salvatore Schillaci (6 goles)
+
+Goleadores por nombre:
+Alberto Gorriz: 1
+Aldo Serena: 1
+Ali Thani Jumaa: 1
+Andreas Brehme: 3
+Andreas Ogris: 1
+Andrei Zygmantovich: 1
+Bernardo Redin: 2
+Bruce Murray: 1
+Careca: 2
+Carlos Valderrama: 1
+Claudio Caniggia: 2
+Daniel Fonseca: 1
+Darko Pancev: 2
+David Platt: 3
+Davor Jozic: 2
+Dragan Stojkovic: 2
+Emmanuel Kunde: 1
+Enzo Scifo: 1
+Eugene Ekeke: 1
+Francois Omam-Biyik: 1
+Freddy Rincon: 1
+Gabi Balint: 2
+Gary Lineker: 4
+Gerhard Rodax: 1
+Giuseppe Giannini: 1
+Glenn Stromberg: 1
+Hernan Medford: 1
+Igor Dobrovolski: 1
+Ivan Hasek: 1
+Jan Ceulemans: 1
+Johnny Ekstrom: 1
+Jorge Burruchaga: 1
+Juan Cayasso: 1
+Julio Salinas: 1
+Jurgen Klinsmann: 3
+Kevin Sheedy: 1
+Khalid Ismail: 1
+Kwan Hwangbo: 1
+Leo Clijsters: 1
+Lothar Matthaus: 4
+Lubos Kubik: 1
+Magdi Abdelghani: 1
+Marc Degryse: 1
+Marius Lacatus: 2
+Mark Wright: 1
+Michal Bilek: 2
+Michel: 4
+Michel De Wolf: 1
+Milan Luhovy: 1
+Mo Johnston: 1
+Muller: 2
+Niall Quinn: 1
+Oleh Protasov: 1
+Oleksandr Zavarov: 1
+Pablo Bengoechea: 1
+Patrick Vervoort: 1
+Paul Caligiuri: 1
+Pedro Monzon: 1
+Pedro Troglio: 1
+Pierre Littbarski: 1
+Robert Prosinecki: 1
+Roberto Baggio: 2
+Roger Flores: 1
+Roger Milla: 4
+Ronald Gonzalez Brenes: 1
+Ronald Koeman: 1
+Rudi Voller: 3
+Ruud Gullit: 1
+Safet Susic: 1
+Salvatore Schillaci: 6
+Stuart McCall: 1
+Tomas Brolin: 1
+Tomas Skuhravy: 5
+Uwe Bein: 1
+Wim Kieft: 1
+
+Goleadores por goles:
+Salvatore Schillaci: 6
+Tomas Skuhravy: 5
+Gary Lineker: 4
+Lothar Matthaus: 4
+Michel: 4
+Roger Milla: 4
+Andreas Brehme: 3
+David Platt: 3
+Jurgen Klinsmann: 3
+Rudi Voller: 3
+Bernardo Redin: 2
+Careca: 2
+Claudio Caniggia: 2
+Darko Pancev: 2
+Davor Jozic: 2
+Dragan Stojkovic: 2
+Gabi Balint: 2
+Marius Lacatus: 2
+Michal Bilek: 2
+Muller: 2
+Roberto Baggio: 2
+Alberto Gorriz: 1
+Aldo Serena: 1
+Ali Thani Jumaa: 1
+Andreas Ogris: 1
+Andrei Zygmantovich: 1
+Bruce Murray: 1
+Carlos Valderrama: 1
+Daniel Fonseca: 1
+Emmanuel Kunde: 1
+Enzo Scifo: 1
+Eugene Ekeke: 1
+Francois Omam-Biyik: 1
+Freddy Rincon: 1
+Gerhard Rodax: 1
+Giuseppe Giannini: 1
+Glenn Stromberg: 1
+Hernan Medford: 1
+Igor Dobrovolski: 1
+Ivan Hasek: 1
+Jan Ceulemans: 1
+Johnny Ekstrom: 1
+Jorge Burruchaga: 1
+Juan Cayasso: 1
+Julio Salinas: 1
+Kevin Sheedy: 1
+Khalid Ismail: 1
+Kwan Hwangbo: 1
+Leo Clijsters: 1
+Lubos Kubik: 1
+Magdi Abdelghani: 1
+Marc Degryse: 1
+Mark Wright: 1
+Michel De Wolf: 1
+Milan Luhovy: 1
+Mo Johnston: 1
+Niall Quinn: 1
+Oleh Protasov: 1
+Oleksandr Zavarov: 1
+Pablo Bengoechea: 1
+Patrick Vervoort: 1
+Paul Caligiuri: 1
+Pedro Monzon: 1
+Pedro Troglio: 1
+Pierre Littbarski: 1
+Robert Prosinecki: 1
+Roger Flores: 1
+Ronald Gonzalez Brenes: 1
+Ronald Koeman: 1
+Ruud Gullit: 1
+Safet Susic: 1
+Stuart McCall: 1
+Tomas Brolin: 1
+Uwe Bein: 1
+Wim Kieft: 1

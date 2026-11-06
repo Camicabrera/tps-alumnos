@@ -11,7 +11,6 @@ const bool CON_LISTADOS = true;
 //
 // Uso: ./goleadores < datos/ejemplo.txt
 int main() {
-    // COMPLETAR: crear la estructura donde se van a cargar los goles.
     Goleadores goleadores;
     std::string jugador;
 

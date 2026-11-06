@@ -26,7 +26,6 @@ Conclusiones
 ------------
 
 1. Funcion elegida
-1. Funcion elegida
 H4 (x31): con capacidad inicial 8 dio 28 (se esperaba 30,6) y con 7 dio 36 (se esperaba 33,5).
 Queda cerca de lo esperado, es decir que reparte como el azar, porque usa todas las letras y su orden.
 

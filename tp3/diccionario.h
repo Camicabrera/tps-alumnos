@@ -113,6 +113,7 @@ Diccionario<K, V>::Diccionario() : tabla(CAPACIDAD_INICIAL) {
 
 template <typename K, typename V>
 void Diccionario<K, V>::insertar(const K& clave, const V& valor) {
+    
     if (!pertenece(clave)){ //se puede hacer con un solo buscar, preguntar
         tabla.insertar(clave,valor);
         return;

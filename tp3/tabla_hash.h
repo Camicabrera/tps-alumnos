@@ -30,10 +30,6 @@
 template <typename K, typename V>
 class TablaHash {
   private:
-    // COMPLETAR: la representacion la eligen ustedes (que guardan, y que hay
-    // en cada bucket). Pueden agregar tambien funciones auxiliares privadas.
-    // Lo que el Iterador necesite de aca tiene que estar declarado antes que el.
-
 
     struct Nodo {
         K clave;
@@ -136,7 +132,6 @@ class TablaHash {
         // Post: devuelve la clave del par actual, sin modificar el iterador.
         // Costo: O(1).
         K clave() {
-            // COMPLETAR (reemplazar la linea de abajo)
             return actual->clave;
         }
 
@@ -144,7 +139,6 @@ class TablaHash {
         // Post: devuelve el valor del par actual, sin modificar el iterador.
         // Costo: O(1).
         V valor() {
-            // COMPLETAR (reemplazar la linea de abajo)
             return actual->valor;
         }
 
@@ -153,7 +147,7 @@ class TablaHash {
         // Costo: O(c) en peor caso. Recorrer la tabla entera (crear el
         //        iterador y avanzar hasta el final) cuesta O(n + c).
         void avanzar() {
-            // COMPLETAR
+            
             if (actual->siguiente != nullptr){
                 actual= actual->siguiente;
                 return;
@@ -175,7 +169,6 @@ class TablaHash {
 
 template <typename K, typename V>
 TablaHash<K, V>::TablaHash(size_t capacidad_inicial) {
-    // COMPLETAR
     buckets= new Nodo* [capacidad_inicial];
     c_buckets= capacidad_inicial;
     c_claves=0;
@@ -187,7 +180,6 @@ TablaHash<K, V>::TablaHash(size_t capacidad_inicial) {
 
 template <typename K, typename V>
 TablaHash<K, V>::~TablaHash() {
-    // COMPLETAR
     for (size_t i=0; i< c_buckets; i++){
        Nodo* actual= buckets[i];
        while (actual!= nullptr){
