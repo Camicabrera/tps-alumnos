@@ -26,22 +26,26 @@ Conclusiones
 ------------
 
 1. Funcion elegida
-H4 (x31): con capacidad inicial 8 dio 28 (se esperaba 30,6) y con 7 dio 36 (se esperaba 33,5).
-Queda cerca de lo esperado, es decir que reparte como el azar, porque usa todas las letras y su orden.
+H4 (x31): con capacidad inicial 8 dio 28 colisiones (se esperaba 30,6) y con 7 dio 36 (se esperaba 33,5).
+Queda cerca de lo esperado por un hashing uniforme, es decir que tiene una buena distribucion para este conjunto de claves.
+Elegimos esta funcion porque considera tanto los caracteres como su orden,reduciendo las colisiones que se producen al considerar únicamente la primera letra o la longitud
+
+H2 y H3 presentaron muchas más colisiones porque solo consideran la primera letra o la longitud del nombre. H5 también produjo más colisiones, especialmente con capacidad potencia de 2. Por otro lado, H1 obtuvo resultados similares a H4, pero al sumar los caracteres sin considerar su orden, produce necesariamente el mismo hash para los anagramas.
 
 
 2. Que tienen en comun las claves que colisionan con las funciones malas
 - H2 (primera letra): chocan todas las palabras que tengan la misma inicial. Hay 21 iniciales distintas entre los 75 jugadores,asi que 75 -21 = 54. Ejemplo:  Michel, Michal Bilek, Marius Lacatus y Mo Johnston caen todos en el mismo bucket.
 
-- H3 (largo): colisionan todos los que tengan la misma longitud. Hay 13 largos distintos en los jugadores del archivo,  75-13=62. Aldo Serena y David Platt (11 caracteres), caen en el mismo bucket. Ademas casi todos los nombres
-miden entre 11 y 14 caracteres: 48 de los 75 jugadores quedan en solo 4 buckets.
+- H3 (largo): colisionan todos los que tengan la misma longitud. Hay 13 largos distintos en los jugadores del archivo,  75-13=62. Aldo Serena y David Platt (11 caracteres) caen en el mismo bucket. Ademas casi todos los nombres miden entre 11 y 14 caracteres: 48 de los 75 jugadores quedan en solo 4 buckets.
 En ambos casos la capacidad no cambia el resultado: los buckets ocupados son siempre los mismos.
 
 - H1 (suma) en teoria chocan los anagramas, pero entre nombres no hay del estilo, asi que dio parecido a H4.
 
 
 3. Capacidad potencia de 2
-Con H4 no se ve diferencia. En cambio con H5 si: con 64 dio 46 colisiones y con 56 dio 40, aunque tiene menos buckets. Cuando la base y la capacidad son potencias de 2, al hacer %64 solo influyen las ultimas letras, por eso conviene una base impar (como 31) o una capacidad prima
+Con H4 obtuvimos 28 colisiones con capacidad final 64 y 36 con capacidad 56, por lo que presentó buenos resultados en ambos casos.
+En cambio H5 produjo 46 colisiones con capacidad 64 y 40 con capacidad 56, a pesar de que esta última tiene menos buckets.Esto sucede porque la funcion multiplica por 32, que es potencia de 2. Cuando la capacidad tambien es potencia de 2, el modulo hace que las primeras letras pierdan influencia en el resultado del hash, generando mas colisiones entre nombre con terminaciones similares.
+Por eso para estos datos, H4 resulto mas conveniente
 
 Verificacion
 ------------
