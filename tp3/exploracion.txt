@@ -1,0 +1,53 @@
+Funciones probadas (todas para std::string):
+  H1 suma de letras:    h = h + letra
+  H2 primera letra:     h = clave[0]
+  H3 largo:             h = clave.size()
+  H4 polinomial x31:    h = h * 31 + letra   (ELEGIDA)
+  H5 polinomial x32:    h = h * 32 + letra
+
+Archivo: datos/goles.txt (Mundial 1990), 75 jugadores distintos.
+Esperadas = colisiones si la funcion repartiera de forma uniforme:
+n - c * (1 - (1 - 1/c)^n), con n = 75 y c = capacidad final.
+
+Funcion              Cap. inicial  Cap. final  Colisiones  Esperadas
+-------------------  ------------  ----------  ----------  ---------
+H4 polinomial x31          8            64           28        30.6
+H4 polinomial x31          7            56           36        33.5
+H1 suma de letras          8            64           29        30.6
+H1 suma de letras          7            56           36        33.5
+H2 primera letra           8            64           54        30.6
+H2 primera letra           7            56           54        33.5
+H3 largo                   8            64           62        30.6
+H3 largo                   7            56           62        33.5
+H5 polinomial x32          8            64           46        30.6
+H5 polinomial x32          7            56           40        33.5
+
+Conclusiones
+------------
+
+1. Funcion elegida
+1. Funcion elegida
+H4 (x31): con capacidad inicial 8 dio 28 (se esperaba 30,6) y con 7 dio 36 (se esperaba 33,5).
+Queda cerca de lo esperado, es decir que reparte como el azar, porque usa todas las letras y su orden.
+
+
+2. Que tienen en comun las claves que colisionan con las funciones malas
+- H2 (primera letra): chocan todas las palabras que tengan la misma inicial. Hay 21 iniciales distintas entre los 75 jugadores,asi que 75 -21 = 54. Ejemplo:  Michel, Michal Bilek, Marius Lacatus y Mo Johnston caen todos en el mismo bucket.
+
+- H3 (largo): colisionan todos los que tengan la misma longitud. Hay 13 largos distintos en los jugadores del archivo,  75-13=62. Aldo Serena y David Platt (11 caracteres), caen en el mismo bucket. Ademas casi todos los nombres
+miden entre 11 y 14 caracteres: 48 de los 75 jugadores quedan en solo 4 buckets.
+En ambos casos la capacidad no cambia el resultado: los buckets ocupados son siempre los mismos.
+
+- H1 (suma) en teoria chocan los anagramas, pero entre nombres no hay del estilo, asi que dio parecido a H4.
+
+
+3. Capacidad potencia de 2
+Con H4 no se ve diferencia. En cambio con H5 si: con 64 dio 46 colisiones y con 56 dio 40, aunque tiene menos buckets. Cuando la base y la capacidad son potencias de 2, al hacer %64 solo influyen las ultimas letras, por eso conviene una base impar (como 31) o una capacidad prima
+
+Verificacion
+------------
+Las colisiones se midieron con explorar_hash. Los conteos de la explicacion
+se verificaron sobre datos/goles.txt:
+  jugadores distintos:   grep -v '^$' datos/goles.txt | sort -u | wc -l              -> 75
+  iniciales distintas:   ... | sort -u | cut -c1 | sort -u | wc -l                   -> 21
+  largos distintos:      ... | sort -u | awk '{print length}' | sort -u | wc -l      -> 13

@@ -97,11 +97,12 @@ class TablaHash {
     // Deja de ser valido si se inserta o se elimina en la tabla.
     //
     // Invariante de representacion:
-    //  p_tabla es un puntero a la tabla hash
-    //  actual es nullptr, o apunta a un nodo de la lista de buckets[indice]
-    //  0 <= indice <= p_tabla->c_buckets
-    // si actual!= nullptr, indice<p_tabla->buckets y actual es un nodo de la lista de p_tabla->buckets[indice]
-    // si actual== nullptr, idnice== p_tab;a->buckets (ya se recorrio todo)
+    //   - p_tabla apunta a la tabla que se recorre.
+    //   - 0 <= indice <= p_tabla->c_buckets.
+    //   - si actual != nullptr: indice < p_tabla->c_buckets y actual es un
+    //     nodo de la lista de p_tabla->buckets[indice].
+    //   - si actual == nullptr: indice == p_tabla->c_buckets (ya se recorrio todo).
+   
     class Iterador {
       private:
         

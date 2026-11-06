@@ -8,7 +8,7 @@ size_t funcion_hash(const std::string& clave) {
         hash = hash * 31 + static_cast<unsigned char>(c);   // Multiplica por 31 para que el orden de 
     }                                                       // las letras influya en el hash y así reducir 
     return hash;                                            // las colisiones entre palabras distintas
-}
+
 
 
     //MALAS FUNCIONES DE HASH
