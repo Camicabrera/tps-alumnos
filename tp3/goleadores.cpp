@@ -67,11 +67,12 @@ void Heapify(std::vector<GolesJugador>& A, bool por_goles){
     }
 }
 
+
+// Ordena el vector usando HeapSort con un max-heap.
+// va_despues define como mayor al elemento que debe aparecer (por goles o por orden alfabetico)
+// mas adelante en el listado final.
+// Complejidad: O(n log n) en peor caso.
 void Heapsort(std::vector<GolesJugador>& A, bool por_goles){
-    // Ordena el vector usando HeapSort con un max-heap.
-    // va_despues define como mayor al elemento que debe aparecer (por goles o por orden alfabetico)
-    // mas adelante en el listado final.
-    // Complejidad: O(n log n) en peor caso.
     size_t n = A.size();
     Heapify(A,por_goles);
     if (n>0){
